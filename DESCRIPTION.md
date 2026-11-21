@@ -9,12 +9,12 @@ No more digging through your bags for something your pet will actually eat, or f
 ## Features
 
 - **Feed Pet button**: picks food your pet's diet allows and that is high enough level for your pet to eat, cheapest choice first. The button shows how many meals you're carrying, and its tooltip says what it will feed.
-- **Never feed list**: food you want to keep for yourself, or food that gives you a buff, is never touched. Conjured food can be skipped too.
+- **Never feed list**: food you want to keep for yourself, or food that gives you a buff, is never touched (`/npet never <item>`). Conjured food can be skipped too.
 - **Happiness indicator**: see at a glance whether your pet is happy, content or unhappy, with a warning when it becomes unhappy. The Feed Pet button glows when a meal would help.
 - **Ammo counter**: the ammo you have equipped and the matching ammo in your bags.
 - **Low ammo warnings**: a reminder when you drop below a number you choose, a louder one when you're nearly out, and a one-click re-equip when your equipped ammo runs out but you carry more of the right type.
 - **Key binding** for Feed Pet, under Key Bindings > AddOns.
-- **Simple settings**: lock and move the bar, scale, warning levels and sounds, the never feed list and the language.
+- **Simple settings**: lock and move the bar, scale, warning levels and sounds, conjured food and the language.
 
 ---
 
@@ -33,6 +33,7 @@ The game doesn't allow buttons to change during combat. If your bags change mid-
 | Command | Action |
 | :--- | :--- |
 | `/npet` or `/petammo` | Open the settings. |
+| `/npet never <item link>` | Never feed this food (type it again to allow it). |
 | `/npet lock` / `/npet unlock` | Lock or unlock the bar. |
 | `/npet reset` | Reset the bar's position. |
 | `/npet check` | Test what the addon needs in your game client and save the results (for bug reports). |

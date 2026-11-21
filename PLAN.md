@@ -1,6 +1,8 @@
 # Nullgate's Pet & Ammo - Forever: Plan
 
-Status: planning, with no code written yet. Planned on 2026-11-20.
+Status: phases 0 to 4 built as 1.0.0-beta.1 on 2026-11-20; the in-game checks wait for testers (`/npet check`). Planned on 2026-11-20.
+
+Forever data notes: 380 pet foods over 7 diets (plus Raw Meat, eaten by meat pets); conjured food is flagged. The 30-level feeding rule is the Classic one and `/npet check` reports refusals to confirm it.
 
 - **Folder:** `NullgatesPetAmmo-Forever`
 - **Saved variables:** `NullgatesPetAmmoDB` (per character)

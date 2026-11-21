@@ -1,0 +1,4 @@
+<Bindings>
+    <!-- Secure click binding: feeds the pet the chosen food -->
+    <Binding name="CLICK NullgatesPetAmmoFeed:LeftButton" header="NULLGATESPETAMMO"/>
+</Bindings>

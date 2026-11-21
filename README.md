@@ -1,6 +1,6 @@
 # Nullgate's Pet & Ammo - Forever
 
-> **Status: planning.** No code yet. See [PLAN.md](PLAN.md).
+> **Status: beta** (1.0.0-beta.1). Looking for hunters to test it. See [CHANGELOG.md](CHANGELOG.md).
 
 **Nullgate's Pet & Ammo** is a hunter addon for **World of Warcraft: Forever**. One button feeds your pet the right food from your bags, and the addon keeps an eye on your pet's happiness and your ammo so neither runs out in the middle of a dungeon.
 
@@ -33,6 +33,7 @@ The addon never buys anything. Use Nullgate's Restock to keep pet food and ammo 
 | Command | Action |
 | :--- | :--- |
 | `/npet` or `/petammo` | Open the settings. |
+| `/npet never <item link>` | Never feed this food (type it again to allow it). |
 | `/npet lock` / `/npet unlock` | Lock or unlock the bar. |
 | `/npet reset` | Reset the bar's position. |
 | `/npet check` | Test what the addon needs in your game client and save the results. |
@@ -53,6 +54,18 @@ Not released yet. Once it is:
 
 - **Nullgate's Addon Config**: one settings hub and profile manager for the whole suite.
 - **Nullgate's Restock**, **Quest Tracker**, **Unit Toggles**, **Blacklist** and more.
+
+---
+
+## Development
+
+| Task | Command |
+| :--- | :--- |
+| Refresh the pet food data after a client patch | `python tools/generate_pet_food.py` (reads the latest Forever build from wago.tools) |
+| Run the tests | `lua tests/run.lua`, `lua tests/smoke.lua` and `lua tests/locales.lua` |
+| Build `zips/NullgatesPetAmmo-Forever-<version>.zip` | `.\package.ps1` (or `.\package.ps1 -Version 1.0.0` to set the version first) |
+
+Publishing a GitHub release uploads that version to CurseForge (`.github/workflows/curseforge.yml`); pushes only run the tests.
 
 ---
 
