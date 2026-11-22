@@ -2,6 +2,12 @@
 
 All notable changes to Nullgate's Pet & Ammo - Forever.
 
+## [1.0.0-beta.2] - 2026-11-21
+
+### Fixed
+
+- Pet buffs the game hides from addons are skipped instead of causing an error when checking whether your pet is eating.
+
 ## [1.0.0-beta.1] - 2026-11-20
 
 First test version, looking for hunters to try it.

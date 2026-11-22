@@ -1,6 +1,6 @@
 # Nullgate's Pet & Ammo - Forever
 
-> **Status: beta** (1.0.0-beta.1). Looking for hunters to test it. See [CHANGELOG.md](CHANGELOG.md).
+> **Status: beta** (1.0.0-beta.2). Looking for hunters to test it. See [CHANGELOG.md](CHANGELOG.md).
 
 **Nullgate's Pet & Ammo** is a hunter addon for **World of Warcraft: Forever**. One button feeds your pet the right food from your bags, and the addon keeps an eye on your pet's happiness and your ammo so neither runs out in the middle of a dungeon.
 
