@@ -111,7 +111,8 @@ function Items.PetEating()
             if not name then return false end
             spellID = id
         end
-        if spellID == Items.FEED_PET_EFFECT then return true end
+        -- Forever can hide aura fields from addons (secret values); those can't be compared.
+        if not (issecretvalue and issecretvalue(spellID)) and spellID == Items.FEED_PET_EFFECT then return true end
     end
     return false
 end
