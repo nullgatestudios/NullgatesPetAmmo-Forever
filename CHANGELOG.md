@@ -2,6 +2,12 @@
 
 All notable changes to Nullgate's Pet & Ammo - Forever.
 
+## [1.0.0-beta.3] - 2026-11-21
+
+### Fixed
+
+- No more "Auras cannot be accessed when secret" error when checking whether your pet is eating.
+
 ## [1.0.0-beta.2] - 2026-11-21
 
 ### Fixed

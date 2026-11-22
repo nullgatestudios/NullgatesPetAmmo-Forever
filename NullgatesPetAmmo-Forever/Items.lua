@@ -98,21 +98,31 @@ function Items.FeedPetName()
     return GetSpellInfo and (GetSpellInfo(Items.FEED_PET)) or "Feed Pet"
 end
 
--- Whether the pet is eating right now (the Feed Pet Effect buff).
+-- Forever won't let addons read some auras (secret values, usually in combat): asking for one is an
+-- error, and hidden fields can't be compared. Returns the aura, nil past the last one, or false when
+-- the game is hiding it.
+local function IsSecret(v) return issecretvalue ~= nil and issecretvalue(v) == true end
+local function ReadAura(unit, i)
+    if C_UnitAuras and C_UnitAuras.GetAuraDataByIndex then
+        local S = C_Secrets
+        if S and S.ShouldUnitAuraIndexBeSecret and S.ShouldUnitAuraIndexBeSecret(unit, i, "HELPFUL") then return false end
+        local ok, a = pcall(C_UnitAuras.GetAuraDataByIndex, unit, i, "HELPFUL")
+        if not ok then return false end
+        if a and (IsSecret(a.name) or IsSecret(a.expirationTime) or IsSecret(a.duration) or IsSecret(a.sourceUnit)
+            or IsSecret(a.spellId)) then return false end
+        return a
+    end
+    local name, _, _, _, duration, expires, caster, _, _, spellId = UnitBuff(unit, i)
+    if not name then return nil end
+    return { name = name, duration = duration, expirationTime = expires, sourceUnit = caster, spellId = spellId }
+end
+
+-- Whether the pet is eating right now (the Feed Pet Effect buff). Hidden auras count as not eating.
 function Items.PetEating()
     for i = 1, 40 do
-        local spellID
-        if C_UnitAuras and C_UnitAuras.GetAuraDataByIndex then
-            local aura = C_UnitAuras.GetAuraDataByIndex("pet", i, "HELPFUL")
-            if not aura then return false end
-            spellID = aura.spellId
-        else
-            local name, _, _, _, _, _, _, _, _, id = UnitBuff("pet", i)
-            if not name then return false end
-            spellID = id
-        end
-        -- Forever can hide aura fields from addons (secret values); those can't be compared.
-        if not (issecretvalue and issecretvalue(spellID)) and spellID == Items.FEED_PET_EFFECT then return true end
+        local aura = ReadAura("pet", i)
+        if not aura then return false end
+        if aura.spellId == Items.FEED_PET_EFFECT then return true end
     end
     return false
 end
