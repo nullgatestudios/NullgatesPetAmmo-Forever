@@ -176,6 +176,12 @@ SlashCmdList.NULLGATESPETAMMO("")
 OK(NullgatesPetAmmoOptions and NullgatesPetAmmoOptions.shown, "/npet opens the settings")
 pet = true
 SlashCmdList.NULLGATESPETAMMO("check")
+do -- the report window every Nullgate addon shares
+    local w = NullgateReportWindow
+    OK(w and w.shown and w.url == "https://nullgatestudios.com/report?addon=pet-ammo", "check opens the shared report window with this addon's link")
+    OK(w and w.text and w.text:find("Addon: pet-ammo\nNullgate's Pet & Ammo - Forever ", 1, true) == 1, "the report starts with the addon's slug and name")
+    OK(w and w.box.text == w.text and w.link.text == w.url, "the report and the link are in the window, ready to copy")
+end
 local log = table.concat(db.check or {}, "\n")
 OK(log:find("GetPetFoodTypes=yes", 1, true), "check reports which calls exist")
 OK(log:find("Item117 x20 (Meat, level 5): no: level", 1, true), "check explains why food is refused")

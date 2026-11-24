@@ -2,7 +2,7 @@
 ## Title: |cff00c0ffNullgate's Pet & Ammo|r - |cffffd100Forever|r
 ## Notes: Feed your pet the right food with one click; happiness and ammo warnings.
 ## Author: Nullgate Studios
-## Version: 1.0.0-beta.3
+## Version: 1.0.0-beta.4
 ## IconTexture: Interface\Icons\Ability_Hunter_BeastTraining
 ## SavedVariablesPerCharacter: NullgatesPetAmmoDB
 ## OptionalDeps: NullgatesAddonConfig-Forever
@@ -26,5 +26,6 @@ Items.lua
 Warn.lua
 Buttons.lua
 Options.lua
+NullgateReport.lua
 Check.lua
 Core.lua

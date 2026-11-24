@@ -22,8 +22,21 @@ local function Log(text)
         db.check[#db.check + 1] = text
     end
     print("|cff00c0ffNullgate's Pet & Ammo check:|r " .. text)
+    if NullgateReport then NullgateReport.Update("pet-ammo") end
 end
 Check.Log = Log
+
+-- Opens the report window every Nullgate addon shares (NullgateReport.lua) with this check's log,
+-- ready to copy and paste into the report form on our website.
+function Check.ShowReport()
+    local L = ns.L
+    return NullgateReport.Show({
+        slug = "pet-ammo", name = "Nullgate's Pet & Ammo", addon = "NullgatesPetAmmo-Forever", command = "/npet check",
+        lines = function() return ns.db and ns.db.check end,
+        title = L["Bug report"], selectAll = L["Select all"], selectLink = L["Select link"],
+        help = L["Press Ctrl+C to copy this report, then paste it into a new report at the link below, with a few words on what happened."],
+    })
+end
 
 local function Exists(path)
     local value = _G
@@ -72,7 +85,7 @@ end
 local function BuildPanel()
     panel = CreateFrame("Frame", "NullgatesPetAmmoCheck", UIParent, "BasicFrameTemplateWithInset")
     panel:SetSize(300, 110)
-    panel:SetPoint("CENTER")
+    panel:SetPoint("TOPLEFT", NullgateReport.Frame(), "TOPRIGHT", 4, 0)
     panel:SetFrameStrata("DIALOG")
     panel:SetToplevel(true)
     panel:SetMovable(true)
@@ -117,4 +130,5 @@ function Check.Run()
     StaticChecks()
     if not panel then BuildPanel() end
     panel:Show()
+    Check.ShowReport()
 end

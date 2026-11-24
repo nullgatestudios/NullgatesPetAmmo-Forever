@@ -2,6 +2,10 @@
 local _, ns = ...
 
 ns.RegisterLanguagePack("zhTW", "繁體中文", {
+    ["Bug report"] = "錯誤回報",
+    ["Select all"] = "全選",
+    ["Press Ctrl+C to copy this report, then paste it into a new report at the link below, with a few words on what happened."] = "按 Ctrl+C 複製這份報告，然後在下方連結中新增回報並貼上，再簡單說明發生了什麼。",
+    ["Select link"] = "選取連結",
     ["%s can be fed again."] = "%s可以再次餵食了。",
     ["Almost out of ammo: %d left."] = "彈藥快用完了：剩餘 %d。",
     ["Ammo"] = "彈藥",
